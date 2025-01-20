@@ -1,0 +1,12 @@
+{
+  "name": "chatbot",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "bash start.sh"
+  },
+  "dependencies": {
+    "flask": "^2.0.1",
+    "python-dotenv": "^0.19.1",
+    "google-generativeai": "^1.0.0"
+  }
+}
