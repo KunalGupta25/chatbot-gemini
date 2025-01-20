@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
+</head>
+
+<body>
+  <section class="msger">
+    <header class="msger-header">
+      <div class="msger-header-title">
+        <i class="fas fa-bug"></i> Chatbot <i class="fas fa-bug"></i>
+      </div>
+      <div class="msger-header-buttons">
+        <a href="/" class="header-button home-button">Clear Chat</a>
+        <a href="/about" class="header-button about-button">About</a>
+      </div>
+    </header>
+
+    <form class="msger-inputarea" method="POST" action="/">
+      <input type="text" class="msger-input" id="query" name="query" placeholder="Enter your message..." required>
+      <button type="submit" class="msger-send-btn">Send</button>
+    </form>
+
+    <main class="msger-chat">
+      {% for message in messages %}
+      <div class="msg {{ message.side }}-msg">
+        <div class="msg-img" style="background-image: url({{ message.img }})"></div>
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name">{{ message.name }}</div>
+            <div class="msg-info-time">{{ message.time }}</div>
+          </div>
+          <div class="msg-text">{{ message.text }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </main>
+  </section>
+</body>
+
+</html>
