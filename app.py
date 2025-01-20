@@ -2,16 +2,18 @@ from flask import Flask, render_template, request, session, redirect, url_for
 from datetime import datetime
 from google import genai
 from google.genai import types
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for session management
 
 # Genai initialization
-client = genai.Client(api_key='AIzaSyDrSVoJnOEZclbciDf5hyor665iHG1nQsQ')
-# response = model.generate_content("Explain how AI works")
-# print(response.text)
-PERSON_IMG = "https://img.icons8.com/bubbles/100/user.png";
-BOT_IMG = "https://img.icons8.com/dusk/64/bot--v1.png";
+client = genai.Client(api_key=os.getenv('API_KEY'))
+PERSON_IMG = "https://img.icons8.com/bubbles/100/user.png"
+BOT_IMG = "https://img.icons8.com/dusk/64/bot--v1.png"
 
 def formatDate(date):
     return date.strftime("%H:%M")  # Adjust the format as needed
